@@ -12,14 +12,21 @@ function PickerPanel({
   jumpForward,
   jumpBackward,
   thisYear,
-  choiseYear
+  choiseYear,
+  top,
+  left
 }) {
   if (!isOpen) {
     return null;
   }
 
+  let style = {
+    top: top + "px",
+    left: left + "px"
+  };
+
   return (
-    <div className="picker-panel">
+    <div className="picker-panel" style={style}>
       <div className="header">
         <JumpButton onClick={jumpBackward} direction="backward" />
         <Button onClick={decreaseYear} direction="backward" />

@@ -11,11 +11,13 @@ class YearPicker extends Component {
       currentYear: "",
       yearIsSelected: false,
       selectedYear: new Date().getFullYear(),
-      panelIsOpen: false
+      panelIsOpen: false,
+      panelTop: 0,
+      panelLeft: 0
     };
   }
 
-  position = () => {
+  panelPosition = () => {
     const picker = document.querySelector(".year-picker");
     const X = picker.getBoundingClientRect().left; // расстояние от левой стороны окна до левой стороны элемента
     const horizontalCenter = X + picker.getBoundingClientRect().width / 2; //расстояние от левой стороны окна до центра элемента по горизонтали
@@ -30,16 +32,27 @@ class YearPicker extends Component {
     const windowWidth = window.innerWidth; // ширина окна браузера
 
     if (windowHeight - Y > 240) {
-      const top = Y + 20;
-      console.log(top);
+      const top = elementHeight + 10;
+      this.setState({ panelTop: top });
     } else {
-      const top = Y - 20 - windowHeight;
-      console.log(top);
+      const top = -20 - 220;
+      this.setState({ panelTop: top });
+    }
+
+    if (
+      horizontalCenter - elementWidth / 2 >= 120 &&
+      windowWidth - horizontalCenter >= 120
+    ) {
+      const left = -120 + elementWidth / 2;
+      this.setState({ panelLeft: left });
+    } else {
+      const left = 0;
+      this.setState({ panelLeft: left });
     }
   };
 
   componentDidMount() {
-    document.addEventListener("scroll", E => this.position());
+    this.panelPosition();
     document.addEventListener(
       "click",
       function(event) {
@@ -51,6 +64,7 @@ class YearPicker extends Component {
   }
 
   openPanel = event => {
+    this.panelPosition();
     this.setState({ panelIsOpen: true });
   };
 
@@ -120,6 +134,8 @@ class YearPicker extends Component {
           jumpBackward={this.jumpBackward}
           thisYear={this.thisYear}
           choiseYear={this.choiseYear}
+          top={this.state.panelTop}
+          left={this.state.panelLeft}
         />
       </div>
     );
