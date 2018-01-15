@@ -20,10 +20,7 @@ class YearPicker extends Component {
   panelPosition = () => {
     const picker = document.querySelector(".year-picker");
     const X = picker.getBoundingClientRect().left; // расстояние от левой стороны окна до левой стороны элемента
-    const horizontalCenter = X + picker.getBoundingClientRect().width / 2; //расстояние от левой стороны окна до центра элемента по горизонтали
-
     const Y = picker.getBoundingClientRect().bottom; //расстояние от верхней стороны окна до нижней стороны элемента
-    const verticalCenter = Y + picker.getBoundingClientRect().height / 2; //расстояние от верхней стороны окна до центра элемента по вертикали
 
     const elementHeight = picker.getBoundingClientRect().height; // Высота элемента
     const elementWidth = picker.getBoundingClientRect().width; // Ширина элемента
@@ -31,23 +28,53 @@ class YearPicker extends Component {
     const windowHeight = window.innerHeight; //высота окна браузера
     const windowWidth = window.innerWidth; // ширина окна браузера
 
-    if (windowHeight - Y > 240) {
-      const top = elementHeight + 10;
-      this.setState({ panelTop: top });
-    } else {
-      const top = -20 - 220;
-      this.setState({ panelTop: top });
-    }
+    const topTrue = Y - elementHeight - 10 > 220;
+    const halfTopTrue = Y - elementHeight - 10 > 110;
+    const botTrue = windowHeight - Y - 10 > 220;
+    const halfBotTrue = windowHeight - Y - 10 > 110;
+    const leftTrue = X + elementHeight / 2 > 120;
+    const rightTrue = windowWidth - X - elementWidth / 2 > 120;
 
-    if (
-      horizontalCenter - elementWidth / 2 >= 120 &&
-      windowWidth - horizontalCenter >= 120
-    ) {
+    if (topTrue && !botTrue && leftTrue && rightTrue) {
+      console.log("Сверху  по центру");
+      const top = -230;
       const left = -120 + elementWidth / 2;
-      this.setState({ panelLeft: left });
-    } else {
-      const left = 0;
-      this.setState({ panelLeft: left });
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (!topTrue && botTrue && rightTrue && leftTrue) {
+      console.log("Снизу по центру");
+      const top = elementHeight + 10;
+      const left = -120 + elementWidth / 2;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (halfBotTrue && halfTopTrue && leftTrue && !rightTrue) {
+      console.log("Слева по центру");
+      const top = -110 + elementHeight / 2;
+      const left = -250;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (halfBotTrue && halfTopTrue && !leftTrue && rightTrue) {
+      console.log("Справа по центру");
+      const top = -110 + elementHeight / 2;
+      const left = elementWidth + 10;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (!topTrue && botTrue && leftTrue && !rightTrue) {
+      console.log("слева вниз");
+      const top = 0;
+      const left = -250;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (topTrue && !rightTrue && leftTrue && !botTrue) {
+      console.log("слева вверх");
+      const top = -220 + elementHeight;
+      const left = -250;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (!topTrue && rightTrue && !leftTrue && botTrue) {
+      console.log("Справа вниз ");
+      const top = 0;
+      const left = elementWidth + 10;
+      this.setState({ panelTop: top, panelLeft: left });
+    } else if (topTrue && rightTrue && !leftTrue && !botTrue) {
+      console.log("Справа вверх");
+      const top = -220 + elementHeight;
+      const left = elementWidth + 10;
+      this.setState({ panelTop: top, panelLeft: left });
     }
   };
 

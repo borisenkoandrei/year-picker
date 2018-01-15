@@ -26,7 +26,7 @@ function PickerPanel({
   };
 
   return (
-    <div className="picker-panel" style={style}>
+    <div className="picker-panel popup-left" style={style}>
       <div className="header">
         <JumpButton onClick={jumpBackward} direction="backward" />
         <Button onClick={decreaseYear} direction="backward" />

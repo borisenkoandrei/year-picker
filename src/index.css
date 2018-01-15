@@ -71,12 +71,11 @@ body {
   display: none;
 }
 
-.input-icon-calendar {
-}
-
 /* YEAR PICKER */
 
 .year-picker {
+  margin: 500px 0 0 500px;
+
   position: relative;
   outline: none;
   /* width: 280px; */
