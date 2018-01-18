@@ -1,7 +1,9 @@
 {
-  "name": "datepicker",
-  "version": "0.1.0",
-  "private": true,
+  "name": "yearpicker",
+  "version": "0.2.1",
+  "private": false,
+  "main": "lib/index.js",
+  "module": "./lib/index.js",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "element-closest": "^2.0.2",
@@ -11,9 +13,14 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "clean": "rimraf lib/*",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lib": "babel src --out-dir lib --ignore index-old.js --copy-files"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2"
   }
 }
