@@ -1,6 +1,6 @@
 {
-  "name": "yearpicker",
-  "version": "0.2.1",
+  "name": "react-year-picker",
+  "version": "0.3.1",
   "private": false,
   "main": "lib/index.js",
   "module": "./lib/index.js",
@@ -18,9 +18,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lib": "babel src --out-dir lib --ignore index-old.js --copy-files"
+    "lib": "babel src --out-dir lib --copy-files -watch"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "rimraf": "^2.6.2"
   }
 }

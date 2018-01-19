@@ -1,5 +1,4 @@
 .picker-panel {
-  border-top: 1px solid #e8e8e8;
   position: absolute;
   top: 32px;
   width: 240px;
@@ -14,6 +13,8 @@
 
 .input-wrapper {
   position: relative;
+  height:100%;
+  min-width: 85px;
 }
 
 .imput-wrapper-selected {
@@ -24,10 +25,11 @@
   width: 100%;
   cursor: auto;
   outline: 0;
-  height: 22px;
+  height: 100%;
   color: rgba(0, 0, 0, 0.65);
   background: #fff;
   padding: 0 10px;
+  border-radius: 4px;
 }
 
 .input-icon {
@@ -68,15 +70,22 @@
   position: relative;
   outline: none;
   width: 100px;
-  border: 1px solid #fff;
   list-style: none;
   font-size: 14px;
   text-align: left;
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   background-clip: padding-box;
   line-height: 1.5;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border: 1px solid transparent;
+  border-color: #d9d9d9;
+}
+
+.year-picker:hover {
+    color: #40a9ff;
+    background-color: #fff;
+    border-color: #40a9ff;
 }
 
 /* HEADER */
@@ -98,6 +107,8 @@
   border: none;
   transition: color 0.3s;
   color: rgba(0, 0, 0, 0.45);
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .nav-button * {
