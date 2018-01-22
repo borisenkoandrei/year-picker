@@ -25,9 +25,26 @@ function PickerPanel({
     left: left + "px"
   };
 
+  function headerWheel(e) {
+    e.preventDefault();
+    const delta = e.deltaY;
+    if (delta < 0) {
+      increaseYear();
+    } else {
+      decreaseYear();
+    }
+  }
+
+  function panelKey(e) {
+    console.log(e.altKey);
+    console.log(e.key);
+    console.log(e.keyCode);
+    console.log(e.metaKey);
+  }
+
   return (
-    <div className="picker-panel popup-left" style={style}>
-      <div className="header">
+    <div className="picker-panel popup-left" style={style} onKeyUp={panelKey}>
+      <div className="header" onWheel={headerWheel}>
         <JumpButton onClick={jumpBackward} direction="backward" />
         <Button onClick={decreaseYear} direction="backward" />
         <CurrentYear year={selectedYear} />

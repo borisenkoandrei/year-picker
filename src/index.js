@@ -108,18 +108,21 @@ class YearPicker extends Component {
     this.setState({ panelIsOpen: false });
   };
 
-  callback = ()=>{
-    if (this.props.onChange){
-      this.props.onChange(this.state.currentYear)
+  callback = () => {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.currentYear);
     }
-  }
+  };
 
   choiseYear = year => {
-    this.setState({
-      selectedYear: year,
-      currentYear: year,
-      yearIsSelected: true
-    }, ()=>this.callback());
+    this.setState(
+      {
+        selectedYear: year,
+        currentYear: year,
+        yearIsSelected: true
+      },
+      () => this.callback()
+    );
     this.closePanel();
   };
 
