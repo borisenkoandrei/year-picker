@@ -1,4 +1,4 @@
-# React Date Picker
+# React Year Picker
 
 A simple Yearpicker component for React
 
@@ -34,4 +34,4 @@ class Example extends React.Component {
 
 ### Browser Support
 
-The date picker is compatible with the latest versions of Chrome, Firefox, and IE11+.
+The year picker is compatible with the latest versions of Chrome, Firefox, and IE11+.
