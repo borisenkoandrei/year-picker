@@ -2,7 +2,7 @@
 
 A simple Yearpicker component for React
 
-![](https://user-images.githubusercontent.com/20069293/35214449-3ac3593e-ff72-11e7-986e-38e62b5c4ddd.png)
+![](https://user-images.githubusercontent.com/20069293/35214964-e35e3ca2-ff73-11e7-910e-82b56a324b1a.png)
 
 ## Installation
 

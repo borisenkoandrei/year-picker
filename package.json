@@ -1,6 +1,13 @@
 {
+  "author": "borisenkoandrei",
+  "description": "A simple yearpicker component for React",
+  "version": "0.3.7",
+  "homepage": "https://github.com/borisenkoandrei/year-picker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borisenkoandrei/year-picker.git"
+  },
   "name": "react-year-picker",
-  "version": "0.3.5",
   "private": false,
   "main": "lib/index.js",
   "module": "./lib/index.js",
