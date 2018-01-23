@@ -9,13 +9,60 @@ class YearPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentYear: "",
+      currentYear: this.props.selected ? +this.props.selected : "",
       yearIsSelected: false,
-      selectedYear: new Date().getFullYear(),
+      selectedYear: this.props.selected
+        ? +this.props.selected
+        : new Date().getFullYear(),
       panelIsOpen: false,
       panelTop: 0,
       panelLeft: 0
     };
+  }
+
+  componentDidMount() {
+    this.panelPosition();
+
+    document.addEventListener(
+      "scroll",
+      function(event) {
+        this.panelPosition();
+      }.bind(this)
+    );
+
+    document.addEventListener(
+      "click",
+      function(event) {
+        if (!event.target.closest(".year-picker")) {
+          this.closePanel();
+        }
+      }.bind(this)
+    );
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+        event.preventDefault();
+        if (this.state.panelIsOpen) {
+          switch (event.keyCode) {
+            case 38: //arrow up
+              this.increaseYear();
+              break;
+            case 40: //arrow down
+              this.decreaseYear();
+              break;
+            case 37: //arrow left
+              this.jumpBackward();
+              break;
+            case 39: //arrow right
+              this.jumpForward();
+              break;
+            case 27: //esc
+              this.closePanel();
+          }
+        }
+      }.bind(this)
+    );
   }
 
   panelPosition = () => {
@@ -78,26 +125,6 @@ class YearPicker extends Component {
       this.setState({ panelTop: top, panelLeft: left });
     }
   };
-
-  componentDidMount() {
-    this.panelPosition();
-
-    document.addEventListener(
-      "scroll",
-      function(event) {
-        this.panelPosition();
-      }.bind(this)
-    );
-
-    document.addEventListener(
-      "click",
-      function(event) {
-        if (!event.target.closest(".year-picker")) {
-          this.closePanel();
-        }
-      }.bind(this)
-    );
-  }
 
   openPanel = event => {
     this.panelPosition();
