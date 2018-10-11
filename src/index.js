@@ -84,42 +84,34 @@ class YearPicker extends Component {
     const rightTrue = windowWidth - X - elementWidth / 2 > 120;
 
     if (topTrue && !botTrue && leftTrue && rightTrue) {
-      console.log("Сверху  по центру");
       const top = -230;
       const left = -120 + elementWidth / 2;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (!topTrue && botTrue && rightTrue && leftTrue) {
-      console.log("Снизу по центру");
       const top = elementHeight + 10;
       const left = -120 + elementWidth / 2;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (halfBotTrue && halfTopTrue && leftTrue && !rightTrue) {
-      console.log("Слева по центру");
       const top = -110 + elementHeight / 2;
       const left = -250;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (halfBotTrue && halfTopTrue && !leftTrue && rightTrue) {
-      console.log("Справа по центру");
       const top = -110 + elementHeight / 2;
       const left = elementWidth + 10;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (!topTrue && botTrue && leftTrue && !rightTrue) {
-      console.log("слева вниз");
       const top = 0;
       const left = -250;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (topTrue && !rightTrue && leftTrue && !botTrue) {
-      console.log("слева вверх");
       const top = -220 + elementHeight;
       const left = -250;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (!topTrue && rightTrue && !leftTrue && botTrue) {
-      console.log("Справа вниз ");
       const top = 0;
       const left = elementWidth + 10;
       this.setState({ panelTop: top, panelLeft: left });
     } else if (topTrue && rightTrue && !leftTrue && !botTrue) {
-      console.log("Справа вверх");
       const top = -220 + elementHeight;
       const left = elementWidth + 10;
       this.setState({ panelTop: top, panelLeft: left });

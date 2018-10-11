@@ -36,10 +36,6 @@ function PickerPanel({
   }
 
   function panelKey(e) {
-    console.log(e.altKey);
-    console.log(e.key);
-    console.log(e.keyCode);
-    console.log(e.metaKey);
   }
 
   return (
