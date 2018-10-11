@@ -129,10 +129,12 @@ class YearPicker extends Component {
   openPanel = event => {
     this.panelPosition();
     this.setState({ panelIsOpen: true });
+    this.props.onOpenPanel();
   };
 
   closePanel = event => {
     this.setState({ panelIsOpen: false });
+    this.props.onClosePanel();
   };
 
   callback = () => {
@@ -213,5 +215,11 @@ class YearPicker extends Component {
     );
   }
 }
+
+
+YearPicker.defaultProps = {
+  onOpenPanel: () => null,
+  onClosePanel: () => null
+};
 
 export default YearPicker;
